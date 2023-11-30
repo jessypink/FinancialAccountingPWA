@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+
+}
+header {
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 5px 8px 0 rgba(34, 60, 80, 0.2);
+}
+.menu {
+    flex-grow: 1;
+}
+.menu ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu li {
+    margin-right: 10px;
+}
+.logo {
+    margin-right: 20px;
+}
+.menu a,
+.menu .active {
+    display: block;
+    text-transform: uppercase;
+}
+.menu a {
+    color: #000;
+    text-decoration: none;
+}
+.menu a :hover {
+    color: #fa0303;
+    text-decoration: none;
+}
+
+.menu .active {
+    color: #fff;
+    background-color: #ff3d00;
+    border-radius: 8px;
+}
