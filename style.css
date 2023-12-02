@@ -57,3 +57,7 @@ header {
 .balance-number-p {
     font-size: 40px;
 }
+
+.balance-div, .income-and-expenses-div, .adding-buttons-income-and-expenses-div, .recent-operations-div, .limits-div {
+    margin-bottom: 30px;
+}
