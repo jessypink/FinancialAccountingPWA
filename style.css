@@ -48,3 +48,12 @@ header {
     background-color: #ff3d00;
     border-radius: 8px;
 }
+
+.main-container, .balance-div, .income-div, .expenses-div, .adding-buttons-income-and-expenses-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-number-p {
+    font-size: 40px;
+}
