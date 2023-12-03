@@ -22,29 +22,7 @@
 <!-- Styles -->
 <link rel="stylesheet" href="style.css">
 
-<!-- Javscript -->
-<script>
-	if ("serviceWorker" in navigator) {
-		window.addEventListener("load", () => {
-			navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
-		});
-	}
-</script>
-<script defer src="./main.js"></script>
-<script>
-	function moveToSignUp() {
-		document.getElementById('sign-up-form-div-id').style.display = "flex"; //Показываем элемент
-		document.getElementById('sign-in-form-div-id').style.display = "none"; //Показываем элемент
-		document.getElementById('authentication-title-h3').textContent = "Регистрация"; //Показываем элемент
 
-	}
-	function moveToSignIn() {
-		document.getElementById('sign-in-form-div-id').style.display = "flex"; //Показываем элемент
-		document.getElementById('sign-up-form-div-id').style.display = "none"; //Показываем элемент
-		document.getElementById('authentication-title-h3').textContent = "Вход"; //Показываем элемент
-
-	}
-</script>
 </head>
 
 <body>
@@ -57,14 +35,15 @@
 					<img src="Logo.png" width="60" height="60px" />
 				</a>
 			</div>
-			<p class="hello-text-p">Привет, %username%!</p>
+			<p class="hello-text-p">Привет,  <p id="user-name-id-p" class="user-name-p">%username%!</p></p>
 		</div>
 		<div class="menu">
 			<ul class="ul-menu">
 				<li><a href="#balance-block">Баланс</a></li>
 				<li><a href="#income-and-expenses-block">Операции</a></li>
 				<li><a href="#limits-block">Лимиты</a></li>
-				<li><a href="#sign-in-up-modal">Вход</a></li>
+				<li><a id="sign-in-a" href="#sign-in-up-modal">Вход</a></li>
+				<li><a id="sign-out-a" href="#sign-in-up-modal">Выход</a></li>
 			</ul>
 		</div>
 	</div>
@@ -129,6 +108,60 @@
 		</div>
 	</div>
 </div>
+
+<!-- Javscript -->
+<script>
+	if ("serviceWorker" in navigator) {
+		window.addEventListener("load", () => {
+			navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+		});
+	}
+	function moveToSignUp() {
+		document.getElementById('sign-up-form-div-id').style.display = "flex"; //Показываем элемент
+		document.getElementById('sign-in-form-div-id').style.display = "none"; //Показываем элемент
+		document.getElementById('authentication-title-h3').textContent = "Регистрация"; //Показываем элемент
+
+	}
+	function moveToSignIn() {
+		document.getElementById('sign-in-form-div-id').style.display = "flex"; //Показываем элемент
+		document.getElementById('sign-up-form-div-id').style.display = "none"; //Показываем элемент
+		document.getElementById('authentication-title-h3').textContent = "Вход"; //Показываем элемент
+
+	}
+
+	// Функция для отправки данных о пользователе
+	let xhrData = new XMLHttpRequest(); // Создаем новый объект XMLHttpRequest
+	let userName = document.getElementById('user-name-id-p');
+	xhrData.onreadystatechange = function() // Устанавливаем функцию, которая будет вызываться при изменении состояния объекта `xhr`
+	{
+		if (xhrData.readyState === 4 && xhrData.status === 200) // Проверяем, что запрос завершен и успешен
+		{
+			if (xhrData.responseText)
+			{
+				let userData = JSON.parse(xhrData.responseText);
+				userName.textContent = userData[0];
+				document.getElementById('sign-in-a').style.display = "none";
+				document.getElementById('sign-out-a').style.display = "block";
+			}
+		}
+	};
+	xhrData.open("POST", "user-data.php"); // Открываем соединение с сервером с помощью метода "POST" и адреса "cards.php"
+	xhrData.send(); // Отправляем запрос на сервер
+
+	// Функция для обработки кнопки выход
+	let exit = document.getElementById("sign-out-a");
+	exit.onclick = function()
+	{
+		document.getElementById('sign-in-a').style.display = "block";
+		document.getElementById('sign-out-a').style.display = "none";
+		let xhr = new XMLHttpRequest();
+		xhr.open('POST', 'exit.php', false); // Установлен параметр async в false
+		xhr.send();
+	}
+</script>
+<script src="main.js"></script>
 </body>
 
 </html>
+
+
