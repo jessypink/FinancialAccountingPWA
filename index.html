@@ -7,6 +7,9 @@
 <title>Financial accounting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Styles -->
+<link rel="stylesheet" href="style.css">
+
 <!-- Icons and Colors -->
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -19,15 +22,12 @@
 <meta name="msapplication-config" content="./browserconfig.xml">
 <meta name="theme-color" content="#000000">
 
-<!-- Styles -->
-<link rel="stylesheet" href="style.css">
-
 
 </head>
 
 <body>
 
-<header>
+<header class="bien-glass more-blur white-transparent-outline">
 	<div class="header-container-div">
 		<div class="logo-hello-div">
 			<div class="logo">
@@ -35,7 +35,7 @@
 					<img src="Logo.png" width="60" height="60px" />
 				</a>
 			</div>
-			<p class="hello-text-p">Привет,  <p id="user-name-id-p" class="user-name-p">%username%!</p></p>
+
 		</div>
 		<div class="menu">
 			<ul class="ul-menu">
@@ -43,64 +43,74 @@
 				<li><a href="#income-and-expenses-block">Операции</a></li>
 				<li><a href="#limits-block">Лимиты</a></li>
 				<li><a id="sign-in-a" href="#sign-in-up-modal">Вход</a></li>
-				<li><a id="sign-out-a" href="#sign-in-up-modal">Выход</a></li>
+				<li><a id="sign-out-a">Выход</a></li>
 			</ul>
 		</div>
 	</div>
 </header>
 
 <div class="main-container">
-	<div id="balance-block" class="balance-div">
-		<p class="balance-text-p">Баланс:</p>
-		<p class="balance-number-p">20 000</p>
-	</div>
-	<div id="income-and-expenses-block" class="income-and-expenses-div">
-		<div class="income-div">
-			<p class="income-text-p">Доходы в этом месяце:</p>
-			<p class="income-number-p">0</p>
+	<div class="left-block-for-mobile bien-glass white-transparent-outline">
+		<div id="balance-block" class="balance-div border-bottom">
+			<p id="hello-text-id-p" class="hello-text-p">
+				Привет, <p id="user-name-id-p" class="user-name-p">
+						</p>
+			<p class="balance-text-p font-light">Баланс:</p>
+			<p class="balance-number-p font-size-40 font-black">20 000</p>
 		</div>
-		<div class="expenses-div">
-			<p class="expenses-text-p">Расходы в этом месяце:</p>
-			<p class="expenses-number-p">0</p>
+		<div id="income-and-expenses-block" class="income-and-expenses-div mgb-0">
+			<div class="income-div">
+				<p class="income-text-p font-light">Доходы в этом месяце:</p>
+				<p class="income-number-p font-size-25 font-black">0</p>
+			</div>
+			<div class="expenses-div mgb-20">
+				<p class="expenses-text-p font-light">Расходы в этом месяце:</p>
+				<p class="expenses-number-p font-size-25 font-black">0</p>
+			</div>
+			<div class="adding-buttons-income-and-expenses-div mgb-0">
+				<input type="button" name="add-income-input" value="Добавить доход" class="button-default mgb-5" />
+				<input type="button" name="add-expenses-input" value="Добавить расход" class="button-default mgb-5" />
+			</div>
 		</div>
 	</div>
-	<div class="adding-buttons-income-and-expenses-div">
-		<input type="button" name="add-income-input" value="Добавить доход" />
-		<input type="button" name="add-expenses-input" value="Добавить расход" />
-	</div>
-	<div id="limits-block" class="recent-operations-div">
-		<p class="recent-operations-text-p">Последние операции в этом месяце:</p>
-	</div>
-	<div class="limits-div">
-		limits-div
-
+	<div class="right-block-for-mobile bien-glass white-transparent-outline">
+		<div id="limits-block" class="recent-operations-div mgb-15">
+			<p class="recent-operations-text-p font-light">Последние операции в этом месяце:</p>
+			11.12 +2 003 Нашел на дороге <br>
+			9.12 -893 Продукты
+		</div>
+		<div class="limits-div">
+			<p class="limits-text-p font-light">Лимиты на категории:</p>
+			0/1 000 продукты <br>
+			0/4 000 развлечения
+		</div>
 	</div>
 
 	<div id="sign-in-up-modal" class="modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h3 id="authentication-title-h3" class="modal-title">Вход</h3>
+				<div class="modal-header border-bottom">
+					<h3 id="authentication-title-h3" class="modal-title font-black">Вход</h3>
 					<a href="#close" title="Close" class="close">×</a>
 				</div>
 				<div class="modal-body">
 					<div id="sign-in-form-div-id" class="sign-in-form-div">
 						<form action="enter.php" id="form-block" method="post">
-							<input type="text" name="login-signin-input" placeholder="Логин"/>
-							<input type="password" name="password-signin-input" placeholder="Пароль"/>
-							<button type="submit">Войти</button>
-							<button type="button" onclick="moveToSignUp()">Еще не зарегестрированы?</button>
+							<input type="text" name="login-signin-input" placeholder="Логин" class="input-textfield"/>
+							<input type="password" name="password-signin-input" placeholder="Пароль" class="input-textfield mgb-15"/>
+							<button type="submit" class="button-default mgb-5 p-5">Войти</button>
+							<button type="button" onclick="moveToSignUp()" class="button-default p-5">Еще не зарегестрированы?</button>
 						</form>
 					</div>
 
 					<div id="sign-up-form-div-id" class="sign-up-form-div">
 						<form action="registration.php" id="form-block" method="post">
-							<input type="text" name="login-input" placeholder="Логин"/>
-							<input type="email" name="email-input" placeholder="Почта"/>
-							<input type="text" name="name-input" placeholder="Имя"/>
-							<input type="password" name="password-input" placeholder="Пароль"/>
-							<button type="submit">Зарегистрироваться</button>
-							<button type="button" onclick="moveToSignIn()">Уже есть учетная запись?</button>
+							<input type="text" name="login-input" placeholder="Логин" class="input-textfield"/>
+							<input type="email" name="email-input" placeholder="Почта" class="input-textfield"/>
+							<input type="text" name="name-input" placeholder="Имя" class="input-textfield"/>
+							<input type="password" name="password-input" placeholder="Пароль" class="input-textfield mgb-10"/>
+							<button type="submit" class="button-default mgb-5 p-5">Зарегистрироваться</button>
+							<button type="button" onclick="moveToSignIn()" class="button-default mgb-5 p-5">Уже есть учетная запись?</button>
 						</form>
 					</div>
 				</div>
@@ -142,6 +152,8 @@
 				userName.textContent = userData[0];
 				document.getElementById('sign-in-a').style.display = "none";
 				document.getElementById('sign-out-a').style.display = "block";
+				document.getElementById('hello-text-id-p').style.display = "block";
+				document.getElementById('user-name-id-p').style.display = "block";
 			}
 		}
 	};
@@ -154,6 +166,8 @@
 	{
 		document.getElementById('sign-in-a').style.display = "block";
 		document.getElementById('sign-out-a').style.display = "none";
+		document.getElementById('hello-text-id-p').style.display = "none";
+		document.getElementById('user-name-id-p').style.display = "none";
 		let xhr = new XMLHttpRequest();
 		xhr.open('POST', 'exit.php', false); // Установлен параметр async в false
 		xhr.send();
